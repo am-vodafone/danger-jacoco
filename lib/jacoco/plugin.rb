@@ -85,7 +85,7 @@ module Danger
     # Select modified and added files in this PR
     def classes(delimiter)
       git = @dangerfile.git
-      affected_files = git.modified_files + git.added_files
+      affected_files =  git.added_files
       affected_files.select { |file| files_extension.reduce(false) { |state, el| state || file.end_with?(el) } }
                     .map { |file| file.split('.').first.split(delimiter)[1] }
     end
